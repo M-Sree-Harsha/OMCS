@@ -1,22 +1,22 @@
 within SIMULATOR.UO;
 
 model DistillationColumn
-  inner Modelicaheater.DataBase.System s ;
+  inner SIMULATOR.DataBase.System s ;
   parameter Integer Nt=30 "Number of Trays";
   parameter Integer Nf=1 "Number of feed inputs";
   parameter Integer Ft=30 "array of Feed Trays";
   parameter Integer TP=1;
   parameter Real RR,RB,condensertemp;
   
-  Modelicaheater.DataBase.Flash Feed_VLE(Nc=s.Nc,C=s.C);
-  Modelicaheater.DataBase.TrayVLE Trays_VLE[Nt](each Nc=s.Nc,each C=s.C,each Choice=TP);
-  Modelicaheater.DataBase.CondenserVLE condenser_VLE(Nc=s.Nc,C=s.C,Choice=TP);
-  Modelicaheater.DataBase.TrayVLE Reboiler_VLE(Nc=s.Nc,C=s.C,Choice=TP);
-  Modelicaheater.Interfaces.matConn Feed(Nc = s.Nc) annotation(
+  SIMULATOR.DataBase.Flash Feed_VLE(Nc=s.Nc,C=s.C);
+  SIMULATOR.DataBase.TrayVLE Trays_VLE[Nt](each Nc=s.Nc,each C=s.C,each Choice=TP);
+  SIMULATOR.DataBase.CondenserVLE condenser_VLE(Nc=s.Nc,C=s.C,Choice=TP);
+  SIMULATOR.DataBase.TrayVLE Reboiler_VLE(Nc=s.Nc,C=s.C,Choice=TP);
+  SIMULATOR.Interfaces.matConn Feed(Nc = s.Nc) annotation(
     Placement(visible = true, transformation(origin = {-98, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-98, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelicaheater.Interfaces.matConn Dist(Nc = s.Nc) annotation(
+  SIMULATOR.Interfaces.matConn Dist(Nc = s.Nc) annotation(
     Placement(visible = true, transformation(origin = {100, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelicaheater.Interfaces.matConn Bottoms(Nc = s.Nc) annotation(
+  SIMULATOR.Interfaces.matConn Bottoms(Nc = s.Nc) annotation(
     Placement(visible = true, transformation(origin = {100, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   
 equation

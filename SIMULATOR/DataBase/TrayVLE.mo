@@ -2,10 +2,10 @@ within SIMULATOR.DataBase;
 
 model TrayVLE
 
-extends Modelicaheater.GuessModels.InitialGuess;
+extends SIMULATOR.GuessModels.InitialGuess;
   parameter Integer Nc "Number of Components" annotation( HideResult = true );
   parameter Simulator.Files.ChemsepDatabase.GeneralProperties C[Nc] annotation( HideResult = true );
-  Real F_p[3](each min=0 ,start = {500,Fliqg,Fvapg});
+  Real F_p[3](each min=0 ,start = {Fg,Fliqg,Fvapg});
   Real x_pc[3, Nc](each min=0, each max = 1,start={xguess,xg,yg});
   Real xliq(min = 0, max = 1 ,start = xliqg);
   Real xvap(min = 0, max = 1,start = xvapg);
@@ -28,11 +28,11 @@ equation
 
   //Thermodynamic Selection
     if Choice==1 then
-       K_c = Modelicaheater.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
+       K_c = SIMULATOR.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
     else
-       K_c = Modelicaheater.Thermodynamics.NRTL(Nc,P,T,x_pc[2,:],C.VP,C.CAS);
+       K_c = SIMULATOR.Thermodynamics.NRTL(Nc,P,T,x_pc[2,:],C.VP,C.CAS);
     end if;
-  //K_c = Modelicaheater.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
+  //K_c = SIMULATOR.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
     for i in 1:Nc loop
         x_pc[3,i] = K_c[i] * x_pc[2, i];
     end for;

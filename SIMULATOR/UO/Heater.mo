@@ -1,16 +1,16 @@
 within SIMULATOR.UO;
 
 model Heater
-  inner Modelicaheater.DataBase.System s ;
-  parameter String file = Modelica.Utilities.Files.loadResource("Modelica://Modelicaheater/test.txt");
+  inner SIMULATOR.DataBase.System s ;
+  parameter String file = Modelica.Utilities.Files.loadResource("Modelica://SIMULATOR/test.txt");
   parameter Real Pout = Modelica.Utilities.Examples.readRealParameter(file, "OutletPressure");
   parameter Real Tout = Modelica.Utilities.Examples.readRealParameter(file, "OutletTemperature");
-  Modelicaheater.Interfaces.matConn In(Nc = s.Nc) annotation(
+  SIMULATOR.Interfaces.matConn In(Nc = s.Nc) annotation(
     Placement(visible = true, transformation(origin = {-100, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelicaheater.Interfaces.matConn Out(Nc = s.Nc) annotation(
+  SIMULATOR.Interfaces.matConn Out(Nc = s.Nc) annotation(
     Placement(visible = true, transformation(origin = {100, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  parameter Modelicaheater.Thermodynamics.ThermodynamicsLists tp annotation( HideResult = true );
-  Modelicaheater.DataBase.Flash Fl_in(Nc=s.Nc,C=s.C),Fl_out(Nc=s.Nc,C=s.C);
+  parameter SIMULATOR.Thermodynamics.ThermodynamicsLists tp annotation( HideResult = true );
+  SIMULATOR.DataBase.Flash Fl_in(Nc=s.Nc,C=s.C),Fl_out(Nc=s.Nc,C=s.C);
   //Real Q;
 
 equation
@@ -19,7 +19,7 @@ equation
   Out.P = Pout;
   Out.T = Tout;
   
-  if tp==Modelicaheater.Thermodynamics.ThermodynamicsLists.RaoultsLaw then
+  if tp==SIMULATOR.Thermodynamics.ThermodynamicsLists.RaoultsLaw then
   Fl_in.Choice=1;
   Fl_out.Choice=1;
   else

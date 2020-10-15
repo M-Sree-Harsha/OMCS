@@ -1,0 +1,8 @@
+Temperature=300
+MolarFlowRate=50
+Pressure=5000
+X1=0.0
+X2=0.2
+X3=0.8
+OutletTemperature=400
+OutletPressure=4000

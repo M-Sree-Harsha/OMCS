@@ -1,8 +1,8 @@
 within SIMULATOR.DataBase;
 
 model CondenserVLE
-inner Modelicaheater.DataBase.System s;
-extends Modelicaheater.GuessModels.InitialGuess;
+inner SIMULATOR.DataBase.System s;
+extends SIMULATOR.GuessModels.InitialGuess;
   parameter Integer Nc "Number of Components" annotation( HideResult = true );
   parameter Simulator.Files.ChemsepDatabase.GeneralProperties C[Nc] annotation( HideResult = true );
   Real F_p[3](each min=0 ,start = {Fg,Fliqg,Fvapg});
@@ -27,9 +27,9 @@ equation
   //H_p[1]=-11838.1;
   //Thermodynamic Selection
     if Choice==1 then
-       K_c = Modelicaheater.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
+       K_c = SIMULATOR.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
     else
-       K_c = Modelicaheater.Thermodynamics.NRTL(Nc,P,T,x_pc[2,:],C.VP,C.CAS);
+       K_c = SIMULATOR.Thermodynamics.NRTL(Nc,P,T,x_pc[2,:],C.VP,C.CAS);
     end if;
 
     for i in 1:Nc loop

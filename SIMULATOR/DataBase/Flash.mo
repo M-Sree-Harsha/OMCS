@@ -1,7 +1,7 @@
 within SIMULATOR.DataBase;
 
 model Flash
-extends Modelicaheater.GuessModels.InitialGuess;
+extends SIMULATOR.GuessModels.InitialGuess;
   parameter Integer Nc "Number of Components" annotation( HideResult = true );
   parameter Simulator.Files.ChemsepDatabase.GeneralProperties C[Nc] annotation( HideResult = true );
   Real F_p[3](each min=0 ,start = {Fg,Fliqg,Fvapg});
@@ -26,7 +26,7 @@ equation
 
   //Thermodynamic Selection
     if Choice==1 then
-      K_c = Modelicaheater.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
+      K_c = SIMULATOR.Thermodynamics.RaoultsLaw(Nc,P,T,C.VP);
       
       for i in 1:Nc loop
         gmabubl_c[i] = 1;
@@ -36,13 +36,13 @@ equation
         xliqdew_c[i]=0;
       end for;
     else
-      K_c =Modelicaheater.Thermodynamics.NRTL(Nc,P,T,x_pc[2,:],C.VP,C.CAS);
+      K_c =SIMULATOR.Thermodynamics.NRTL(Nc,P,T,x_pc[2,:],C.VP,C.CAS);
       for i in 1:Nc loop
         philiqbubl_c[i] = 1;
         phivapdew_c[i] = 1;
       end for;
-      gmabubl_c = Modelicaheater.Thermodynamics.gammaNRTL(Nc,C.CAS,x_pc[1,:],T);
-      gmadew_c =  Modelicaheater.Thermodynamics.gammaNRTL(Nc,C.CAS,xliqdew_c,T);
+      gmabubl_c = SIMULATOR.Thermodynamics.gammaNRTL(Nc,C.CAS,x_pc[1,:],T);
+      gmadew_c =  SIMULATOR.Thermodynamics.gammaNRTL(Nc,C.CAS,xliqdew_c,T);
       for i in 1:Nc loop
         xliqdew_c[i] = x_pc[1, i] * Pdew / (gmadew_c[i] * Simulator.Files.ThermodynamicFunctions.Psat(C[i].VP, T));
       end for;

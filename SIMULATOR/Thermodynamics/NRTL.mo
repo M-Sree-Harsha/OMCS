@@ -13,7 +13,7 @@ algorithm
   for i in 1:Nc loop
     Pvap_c[i] := Simulator.Files.ThermodynamicFunctions.Psat(VP[i], T);
   end for;
-  gma_c:=Modelicaheater.Thermodynamics.gammaNRTL(Nc,CAS,x_c,T);
+  gma_c:=SIMULATOR.Thermodynamics.gammaNRTL(Nc,CAS,x_c,T);
   for j in 1:Nc loop
      K_c[j] := gma_c[j] * Pvap_c[j] / P;
   end for;

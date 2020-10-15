@@ -3,7 +3,7 @@ within SIMULATOR.GuessModels;
 model InitialGuess
 
    //Inputs Required to generate Guess Values
-      extends Modelicaheater.GuessModels.GuessInput;
+      extends SIMULATOR.GuessModels.GuessInput;
       //==========================================================================================
       //Guess variables for Pressures and Temperatures
       protected
