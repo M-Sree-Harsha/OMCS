@@ -5,7 +5,7 @@ model TrayVLE
 extends SIMULATOR.GuessModels.InitialGuess;
   parameter Integer Nc "Number of Components" annotation( HideResult = true );
   parameter Simulator.Files.ChemsepDatabase.GeneralProperties C[Nc] annotation( HideResult = true );
-  Real F_p[3](each min=0 ,start = {Fg,Fliqg,Fvapg});
+  Real F_p[3](each min=0 ,start = {500,Fliqg,Fvapg});
   Real x_pc[3, Nc](each min=0, each max = 1,start={xguess,xg,yg});
   Real xliq(min = 0, max = 1 ,start = xliqg);
   Real xvap(min = 0, max = 1,start = xvapg);
