@@ -12,7 +12,7 @@ extends SIMULATOR.GuessModels.InitialGuess;
   Real P(min = 0,start = Pg);
   Real T(min = 0,start = Tg);
   Real K_c[Nc](start=K_guess); //annotation( HideResult = true );
-  Real H_pc[3, Nc](each unit = "kJ/kmol",start={ones(Nc),ones(Nc),ones(Nc)}) "Component molar enthalpy in phase" annotation( HideResult = true );
+  Real H_pc[3, Nc](each unit = "kJ/kmol",start={Hcompg,Hcomplg,Hcompvg}) "Component molar enthalpy in phase" annotation( HideResult = true );
   Real H_p[3](each unit = "kJ/kmol",start={Hmixg,Hliqg,Hvapg}) "Phase molar enthalpy";
   parameter Integer Choice=1;
 

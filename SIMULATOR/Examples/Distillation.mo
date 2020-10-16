@@ -7,7 +7,7 @@ model Distillation
     Placement(visible = true, transformation(origin = {-64, 36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   SIMULATOR.Streams.Sink BottomsSink annotation(
     Placement(visible = true, transformation(origin = {-66, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  SIMULATOR.UO.DistillationColumn distillationColumn(Ft = 46, Nt = 50,RB = 10, RR = 5, TP = 1, condensertemp = 310)  annotation(
+  SIMULATOR.UO.DistillationColumn distillationColumn(Ft = 30, Nt = 50,RB = 10, RR = 5, TP = 1, condensertemp = 310)  annotation(
     Placement(visible = true, transformation(origin = {-120, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(source.Out, distillationColumn.Feed) annotation(

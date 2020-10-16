@@ -19,6 +19,7 @@ model DistillationColumn
   SIMULATOR.Interfaces.matConn Bottoms(Nc = s.Nc) annotation(
     Placement(visible = true, transformation(origin = {100, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   
+
 equation
 
   

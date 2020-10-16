@@ -1,5 +1,5 @@
 within SIMULATOR.GuessModels;
 model GuessInput
- parameter Real Pg = 101325 annotation( HideResult = true );
- parameter Real Fg =  200 annotation( HideResult = true );  
+ parameter Real Pg = 101325;
+ parameter Real Fg = 500;  
 end GuessInput;
